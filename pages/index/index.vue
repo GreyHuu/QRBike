@@ -3,7 +3,6 @@
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area"><text class="title">uView - 多平台快速开发的UI框架</text></view>
 		<view class="button-demo"><u-button :ripple="true">按钮组件演示</u-button></view>
-		<view class="link-demo"><u-link :color="$u.color['primary']" :under-line="true" href="http://www.uviewui.com">跳转uView文档：www.uviewui.com</u-link></view>
 	</view>
 </template>
 
