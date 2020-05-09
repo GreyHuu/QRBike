@@ -21,7 +21,8 @@ export default {
 			//this.$u.vuex('vuex_version', '诗圣');
 
 			this.$u.route({
-				url: 'pages/login/login'
+				url: 'pages/login/login',
+				animationDuration: 200
 			});
 		}
 	}
