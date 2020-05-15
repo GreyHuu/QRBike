@@ -68,46 +68,57 @@ export default {
 			setTimeout(function() {
 				_this.isRotate = false;
 			}, 3000);
-			uni.showLoading({
-				title: '登录中'
+			// uni.showLoading({
+			// 	title: '登录中'
+			// });
+			let data = JSON.stringify({
+				name: 17602603997,
+				password: 123456
 			});
-			/* getLogin()
-			.then(res => {
-				//console.log(res)
-				//简单验证下登录（不安全）
-				if(_this.phoneData==res.data.username && _this.passData==res.data.password){
-					let userdata={
-						"username":res.data.username,
-						"nickname":res.data.nickname,
-						"accesstoken":res.data.accesstoken,
-					} //保存用户信息和accesstoken
-					_this.$store.dispatch("setUserData",userdata); //存入状态
-					try {
-						uni.setStorageSync('setUserData', userdata); //存入缓存
-					} catch (e) {
-						// error
-					}
-					uni.showToast({
-						icon: 'success',
-						position: 'bottom',
-						title: '登录成功'
-					});
-					uni.reLaunch({
-						url: '../../../pages/index',
-					});
-				}else{
-					_this.passData=""
-					uni.showToast({
-						icon: 'error',
-						position: 'bottom',
-						title: '账号或密码错误，账号admin密码admin'
-					});
-				}
-				uni.hideLoading();
-			}).catch(err => {
-				uni.hideLoading();
-			})
-			*/
+			this.$u
+				.post('http://106.15.237.74:5000/api/users/login', {
+					name: '17602603997',
+					password: '123456'
+				})
+				.then(res => {
+					console.log(res);
+				});
+			// .then(res => {
+			// 	console.log(res);
+			// //简单验证下登录（不安全）
+			// if (_this.phoneData == res.data.username && _this.passData == res.data.password) {
+			// 	let userdata = {
+			// 		username: res.data.username,
+			// 		nickname: res.data.nickname,
+			// 		accesstoken: res.data.accesstoken
+			// 	}; //保存用户信息和accesstoken
+			// 	_this.$store.dispatch('setUserData', userdata); //存入状态
+			// 	try {
+			// 		uni.setStorageSync('setUserData', userdata); //存入缓存
+			// 	} catch (e) {
+			// 		// error
+			// 	}
+			// 	uni.showToast({
+			// 		icon: 'success',
+			// 		position: 'bottom',
+			// 		title: '登录成功'
+			// 	});
+			// 	uni.reLaunch({
+			// 		url: '../../../pages/index'
+			// 	});
+			// } else {
+			// 	_this.passData = '';
+			// 	uni.showToast({
+			// 		icon: 'error',
+			// 		position: 'bottom',
+			// 		title: '账号或密码错误，账号admin密码admin'
+			// 	});
+			// }
+			// uni.hideLoading();
+			// })
+			// .catch(err => {
+			// 	uni.hideLoading();
+			// });
 		},
 		register() {
 			console.log('跳转注册');

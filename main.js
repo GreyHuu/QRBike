@@ -31,4 +31,7 @@ const app = new Vue({
 	store,
 	...App
 })
+// http拦截器
+// import httpInterceptor from '@/common/http.interceptor.js'
+// Vue.use(httpInterceptor, app)
 app.$mount()
