@@ -65,12 +65,13 @@ export default {
 				return;
 			}
 			_this.isRotate = true;
+
 			setTimeout(function() {
 				_this.isRotate = false;
 			}, 3000);
-			// uni.showLoading({
-			// 	title: '登录中'
-			// });
+			uni.showLoading({
+				title: '登录中'
+			});
 			let data = JSON.stringify({
 				name: 17602603997,
 				password: 123456
@@ -81,6 +82,7 @@ export default {
 					password: '123456'
 				})
 				.then(res => {
+					uni.hideLoading();
 					console.log(res);
 				});
 			// .then(res => {
