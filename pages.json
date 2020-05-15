@@ -20,7 +20,12 @@
 		{
 		    "path" : "pages/login/forget",
 		    "style" : {}
+		},
+		{
+		    "path" : "pages/map/map",
+		    "style" : {}
 		}
+		
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
