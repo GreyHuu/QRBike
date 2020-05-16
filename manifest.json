@@ -55,13 +55,13 @@
             "ios" : {},
             /* SDK配置 */
             "sdkConfigs" : {
-                "ad" : {},
                 "maps" : {
                     "amap" : {
                         "appkey_ios" : "055213a3917c25053dbb5afc7e6f7448",
                         "appkey_android" : "055213a3917c25053dbb5afc7e6f7448"
                     }
-                }
+                },
+                "ad" : {}
             },
             "icons" : {
                 "android" : {
