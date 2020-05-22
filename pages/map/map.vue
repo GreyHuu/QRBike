@@ -1,5 +1,6 @@
 <template>
 	<view class="page-body">
+		<u-top-tips ref="uTips"></u-top-tips>
 		<map style="height: 100vh;width: 750upx;" :latitude="latitude" :longitude="longitude" :markers="covers" :show-location="true" :scale="9">
 			<cover-image class="scan_image" @click="scanCode()" src="../../static/scan_image.png"></cover-image>
 		</map>
@@ -11,6 +12,13 @@
 export default {
 	data() {
 		return {
+			//  是否登录
+			isLogin: false,
+			//  用户信息
+			user: {
+				id: '',
+				name: ''
+			},
 			id: 0, // 使用 marker点击事件 需要填写id
 			title: 'map',
 			latitude: 30.67, //纬度
@@ -48,6 +56,14 @@ export default {
 		}
 	},
 	onLoad() {
+		//  判断是否登录   登录之后  给user赋值
+		this.isLogin = this.vuex_is_login;
+		if (this.isLogin) {
+			console.log(this.vuex_user);
+			this.user.id = this.vuex_user.id;
+			this.user.name = this.vuex_user.name;
+		}
+
 		this.title = 'hello';
 		this.latitude = 30.05;
 
@@ -96,15 +112,28 @@ export default {
 		//                 if (val.index == 1) {
 		//                                 console.log("第二个按钮");
 		//                 }
-		if (val.index == 0) {
-			uni.navigateTo({
-				url: '../login/login' //测试路径，实际是跳转到用户界面
-			});
-		}
-		if (val.index == 1) {
-			uni.navigateTo({
-				url: '../login/forget' //测试路径，实际是跳转到消息页面
-			});
+
+		//  登录与否     已经登录左上角跳转到我的    右上角跳转到我的信息
+		if (this.isLogin) {
+			if (val.index == 0) {
+				//  我的界面
+				this.$u.route({
+					url: '/pages/mypage/mypage',
+				});
+			}
+			if (val.index == 1) {
+				//  消息界面
+				this.$u.route({
+					url: '/pages/mypage/mypage',
+				});
+			}
+		} else {
+			if (val.index == 0 || val.index == 1) {
+				//  登录界面
+				this.$u.route({
+					url: '/pages/login/login',
+				});
+			}
 		}
 	}
 

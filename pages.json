@@ -4,24 +4,23 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-		    "path" : "pages/map/map",
-		    "style" : {
+			"path": "pages/map/map",
+			"style": {
 				"navigationBarTitleText": "QRBike",
-				"app-plus":{
-					"titleNView":{
-						"autoBackButton":false,//app下可以隐藏
-						"buttons":[
-							{
-								 "text":"\ue648",
-								 "fontSrc":"/static/iconfont.ttf",
-								 "fontSize":"22px",
-								 "float":"left"
+				"app-plus": {
+					"titleNView": {
+						"autoBackButton": false, //app下可以隐藏
+						"buttons": [{
+								"text": "\ue648",
+								"fontSrc": "/static/iconfont.ttf",
+								"fontSize": "22px",
+								"float": "left"
 							},
 							{
-								"text":"\ue78a",
-								"fontSrc":"/static/iconfont.ttf",
-								"fontSize":"22px",
-								"float":"right"
+								"text": "\ue78a",
+								"fontSrc": "/static/iconfont.ttf",
+								"fontSize": "22px",
+								"float": "right"
 							}
 						]
 					}
@@ -33,20 +32,41 @@
 			"style": {
 				"navigationBarTitleText": "QRBike"
 			}
-		}
-		,{
-		    "path" : "pages/login/login",
-		    "style" : {}
+		}, {
+			"path": "pages/login/login",
+			"style": {}
 		},
 		{
-		    "path" : "pages/login/register",
-		    "style" : {}
+			"path": "pages/login/register",
+			"style": {}
 		},
 		{
-		    "path" : "pages/login/forget",
-		    "style" : {}
+			"path": "pages/login/forget",
+			"style": {}
+		},
+		{
+			"path": "pages/mypage/mypage",
+			"style": {
+				"navigationBarTitleText": "QRBike",
+				"app-plus": {
+					"titleNView": {
+						"autoBackButton": true
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/AddMoney/AddMoney",
+			"style": {
+				"navigationBarTitleText": "QRBike",
+				"app-plus": {
+					"titleNView": {
+						"autoBackButton": true
+					}
+				}
+			}
 		}
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "QRBike",
