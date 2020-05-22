@@ -22,6 +22,7 @@
 		    "style" : {}
 		},
 		{
+<<<<<<< HEAD
 		    "path" : "pages/mypage/mypage",
 		    "style" : {}
 		}
@@ -29,6 +30,33 @@
             "path" : "pages/AddMoney/AddMoney",
             "style" : {}
         }
+=======
+		    "path" : "pages/map/map",
+		    "style" : {
+				"navigationBarTitleText": "QRBike",
+				"app-plus":{
+					"titleNView":{
+						"autoBackButton":false,//app下可以隐藏
+						"buttons":[
+							{
+								 "text":"\ue648",
+								 "fontSrc":"/static/iconfont.ttf",
+								 "fontSize":"22px",
+								 "float":"left"
+							},
+							{
+								"text":"\ue78a",
+								"fontSrc":"/static/iconfont.ttf",
+								"fontSize":"22px",
+								"float":"right"
+							}
+						]
+					}
+				}
+			}
+		}
+		
+>>>>>>> 102ffcab1013f5afd3032d4a9711b75ccd3a7813
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
