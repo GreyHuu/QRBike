@@ -53,7 +53,6 @@ export default {
 					type: 'default',
 					position: 'bottom'
 				});
-
 				return;
 			}
 			if (this.passData.length == '') {
@@ -72,18 +71,22 @@ export default {
 			uni.showLoading({
 				title: '登录中'
 			});
-			// let data = JSON.stringify({
-			// 	name: 17602603997,
-			// 	password: 123456
-			// });
 			this.$u
 				.post('http://106.15.237.74:5000/api/users/login', {
-					name: '17602603997',
-					password: '123456'
+					name: this.phoneData,
+					password: this.passData
 				})
 				.then(res => {
-					uni.hideLoading();
-					console.log(res);
+					const { code, msg } = res;
+					if (parseInt(code) === 100) {
+						uni.hideLoading();
+						this.$refs.uToast.show({
+							title: '登录成功，即将跳转',
+							type: 'success',
+							position: 'bottom',
+							url: '/pages/map/map',
+						});
+					}
 				});
 			this.$u
 				.get('http://106.15.237.74:5000/api/users/current-user', {
