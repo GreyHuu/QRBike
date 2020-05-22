@@ -47,12 +47,18 @@ export default {
 	},
 	methods: {
 		scanCode: function() {
-			// 允许从相机和相册扫码
-			uni.scanCode({
-				success: function(res) {
-					console.log(JSON.stringify(res.result));
-				}
-			});
+			if (this.isLogin) {
+				// 允许从相机和相册扫码
+				uni.scanCode({
+					success: function(res) {
+						console.log(JSON.stringify(res.result));
+					}
+				});
+			} else {
+				this.$u.route({
+					url: '/pages/login/login'
+				});
+			}
 		}
 	},
 	onLoad() {
@@ -118,20 +124,20 @@ export default {
 			if (val.index == 0) {
 				//  我的界面
 				this.$u.route({
-					url: '/pages/mypage/mypage',
+					url: '/pages/mypage/mypage'
 				});
 			}
 			if (val.index == 1) {
 				//  消息界面
 				this.$u.route({
-					url: '/pages/mypage/mypage',
+					url: '/pages/mypage/mypage'
 				});
 			}
 		} else {
 			if (val.index == 0 || val.index == 1) {
 				//  登录界面
 				this.$u.route({
-					url: '/pages/login/login',
+					url: '/pages/login/login'
 				});
 			}
 		}
