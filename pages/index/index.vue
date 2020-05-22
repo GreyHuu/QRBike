@@ -3,6 +3,8 @@
 		<image class="logo" src="/static/logo.png"></image>
 		<view>{{ title }}</view>
 		<view class="text-area"><text class="title">uView - 多平台快速开发的UI框架</text></view>
+		<view class="button-demo"><u-button :ripple="true" @tap="gotpLogin">按钮组件演示</u-button></view>
+		<view class="button-demo"><u-button :ripple="true" @tap="gotpMyPage">我的信息</u-button></view>
 		<view class="button-demo"><u-button :ripple="true" @tap="gotpLogin">启动QRBike</u-button></view>
 		<view class="button-demo"><u-button :ripple="true" @tap="gotpMap">打开地图</u-button></view>
 	</view>
@@ -18,18 +20,16 @@ export default {
 	onLoad() {},
 	methods: {
 		gotpLogin() {
-			// 通过此方式改变全局值
-			//this.$u.vuex('vuex_version', '诗圣');
 			this.title = 'koa';
-			// this.$u.route({
-			// 	url: 'pages/login/login',
-			// 	animationDuration: 200
-			// });
+		},
+		gotpMyPage() {
+			this.$u.route({
+				url: 'pages/mypage/mypage'
+			});
 		},
 		gotpMap() {
 			// 通过此方式改变全局值
 			//this.$u.vuex('vuex_version', '诗圣');
-
 			this.$u.route({
 				url: 'pages/map/map',
 				animationDuration: 200
