@@ -63,11 +63,8 @@ export default {
 				});
 				return;
 			}
-			_this.isRotate = true;
 
-			setTimeout(function() {
-				_this.isRotate = false;
-			}, 3000);
+			_this.isRotate = true;
 			uni.showLoading({
 				title: '登录中'
 			});
@@ -79,59 +76,47 @@ export default {
 				.then(res => {
 					const { code, msg } = res;
 					if (parseInt(code) === 100) {
-						uni.hideLoading();
 						this.$refs.uToast.show({
 							title: '登录成功，即将跳转',
 							type: 'success',
-							position: 'bottom',
-							url: '/pages/map/map',
+							position: 'bottom'
 						});
+						setTimeout(() => {
+							this.$u.route({
+								type: 'reLaunch',
+								url: '/pages/map/map'
+							});
+						}, 1500);
+
+						/**
+						 *     使用 this.$u.vuex("vuex_example_data","设置想输入的值")   这样的方式来赋值
+						 *
+						 * 	使用 let example_data=this.vuex_example_data;   来进行取值
+						 * 									相当于vuex_example_data是全局变量
+						 */
+						this.$u.vuex('vuex_is_login', true);
+						this.$u.vuex('vuex_user', msg);
+					} else {
+						this.$refs.uToast.show({
+							title: '账号密码错误',
+							type: 'error',
+							position: 'bottom'
+						});
+						//  清空
+						_this.phoneData = '';
+						_this.passData = '';
+						_this.isRotate = false;
 					}
-				});
-			this.$u
-				.get('http://106.15.237.74:5000/api/users/current-user', {
-					id: '5ebfb245ced8a0108a5d1fb0'
-				})
-				.then(res => {
 					uni.hideLoading();
-					console.log(res);
+					setTimeout(() => {
+						_this.isRotate = false;
+					}, 2000);
+				})
+				.catch(e => {
+					console.log(e);
+					uni.hideLoading();
+					_this.isRotate = false;
 				});
-			// .then(res => {
-			// 	console.log(res);
-			// //简单验证下登录（不安全）
-			// if (_this.phoneData == res.data.username && _this.passData == res.data.password) {
-			// 	let userdata = {
-			// 		username: res.data.username,
-			// 		nickname: res.data.nickname,
-			// 		accesstoken: res.data.accesstoken
-			// 	}; //保存用户信息和accesstoken
-			// 	_this.$store.dispatch('setUserData', userdata); //存入状态
-			// 	try {
-			// 		uni.setStorageSync('setUserData', userdata); //存入缓存
-			// 	} catch (e) {
-			// 		// error
-			// 	}
-			// 	uni.showToast({
-			// 		icon: 'success',
-			// 		position: 'bottom',
-			// 		title: '登录成功'
-			// 	});
-			// 	uni.reLaunch({
-			// 		url: '../../../pages/index'
-			// 	});
-			// } else {
-			// 	_this.passData = '';
-			// 	uni.showToast({
-			// 		icon: 'error',
-			// 		position: 'bottom',
-			// 		title: '账号或密码错误，账号admin密码admin'
-			// 	});
-			// }
-			// uni.hideLoading();
-			// })
-			// .catch(err => {
-			// 	uni.hideLoading();
-			// });
 		},
 		register() {
 			console.log('跳转注册');

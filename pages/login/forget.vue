@@ -28,6 +28,7 @@
 
 <script>
 var _this;
+
 import wInput from '../../components/watch-login/watch-input.vue'; //input
 import wButton from '../../components/watch-login/watch-button.vue'; //button
 export default {
@@ -58,23 +59,30 @@ export default {
 				return false;
 			}
 			console.log('获取验证码');
-			/*
-				this.$refs.runCode.$emit('runCode'); //触发倒计时（一般用于请求成功验证码后调用）
-				uni.showToast({
-				    icon: 'none',
-					position: 'bottom',
-				    title: '模拟倒计时触发'
+			this.$u
+				.get('http://106.15.237.74:5000/api/users/phone-code', {
+					phone: _this.phoneData
+				})
+				.then(res => {
+					const { code, msg } = res;
+					if (parseInt(code) === 100) {
+						this.$refs.uToast.show({
+							title: '验证码发送成功，请输入收到的验证码',
+							type: 'default',
+							position: 'bottom'
+						});
+						this.$refs.runCode.$emit('runCode'); //触发倒计时（一般用于请求成功验证码后调用）
+					} else {
+						this.$refs.uToast.show({
+							title: '验证码发送失败，请稍后再试',
+							type: 'error',
+							position: 'bottom'
+						});
+					}
+				})
+				.catch(e => {
+					console.log(e);
 				});
-				
-				setTimeout(function(){
-					_this.$refs.runCode.$emit('runCode',0); //假装模拟下需要 终止倒计时
-					uni.showToast({
-					    icon: 'none',
-						position: 'bottom',
-					    title: '模拟倒计时终止'
-					});
-				},3000)
-				*/
 		},
 		startRePass() {
 			//重置密码
@@ -106,11 +114,59 @@ export default {
 				});
 				return false;
 			}
-			console.log('重置密码成功');
-			_this.isRotate = true;
-			setTimeout(function() {
-				_this.isRotate = false;
-			}, 3000);
+			//  验证验证码是否匹配
+			this.$u
+				.get('http://106.15.237.74:5000/api/users/compare-code', {
+					code: this.verCode
+				})
+				.then(res => {
+					console.log(res);
+					const { status, msg } = res;
+					if (parseInt(status) === 100) {
+						uni.showLoading({
+							title: '重置密码中'
+						});
+						_this.isRotate = true;
+						// 重置密码
+						this.$u
+							.post('http://106.15.237.74:5000/api/users/forget', {
+								phone: _this.phoneData,
+								password: _this.passData
+							})
+							.then(res => {
+								const { code, msg } = res;
+								if (parseInt(code) === 100) {
+									this.$refs.uToast.show({
+										title: '重置密码成功，请重新登录',
+										type: 'success',
+										position: 'bottom'
+									});
+									setTimeout(() => {
+										this.$u.route({
+											type: 'reLaunch',
+											url: '/pages/login/login'
+										});
+									}, 1500);
+								}
+							})
+							.catch(e => {
+								console.log(e);
+							});
+					} else {
+						this.$refs.uToast.show({
+							title: '验证码不匹配，请重新输入',
+							type: 'error',
+							position: 'bottom'
+						});
+					}
+				})
+				.catch(e => {
+					console.log(e);
+					uni.hideLoading();
+					_this.isRotate = false;
+				});
+			uni.hideLoading();
+			_this.isRotate = false;
 		}
 	}
 };

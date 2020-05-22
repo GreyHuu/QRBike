@@ -31,12 +31,28 @@ const saveLifeData = function(key, value) {
 
 
 const store = new Vuex.Store({
-	// 下面这些值仅为示例，使用过程中请删除
 	state: {
 		// 存储当前用户
 		vuex_user: lifeData.vuex_user ? lifeData.vuex_user : null,
 		//  当前是否登录
 		vuex_is_login: lifeData.vuex_is_login ? lifeData.vuex_is_login : false,
+		
+		
+
+	/**
+				       **            **                              **************
+				 ****     *************                    *          *            *
+					**			**       **                         *     *******      *
+				* *			  * *   **                          *         *            *
+					**				   * *                            **************
+				* *				* *   * *                                  *
+			* *			   * *       *  *                              *******     
+			****** * * * * * * *************              ************
+	 * */
+		// 其他需要存储的值
+		vuex_example_data: "存储的信息需要以这样的形式进行定义”",
+		
+
 	},
 	mutations: {
 		$uStore(state, payload) {
