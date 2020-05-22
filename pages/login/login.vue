@@ -72,14 +72,22 @@ export default {
 			uni.showLoading({
 				title: '登录中'
 			});
-			let data = JSON.stringify({
-				name: 17602603997,
-				password: 123456
-			});
+			// let data = JSON.stringify({
+			// 	name: 17602603997,
+			// 	password: 123456
+			// });
 			this.$u
 				.post('http://106.15.237.74:5000/api/users/login', {
 					name: '17602603997',
 					password: '123456'
+				})
+				.then(res => {
+					uni.hideLoading();
+					console.log(res);
+				});
+			this.$u
+				.get('http://106.15.237.74:5000/api/users/current-user', {
+					id: '5ebfb245ced8a0108a5d1fb0'
 				})
 				.then(res => {
 					uni.hideLoading();
