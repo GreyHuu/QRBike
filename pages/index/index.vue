@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
-		<view>{{ vuex_version }}</view>
+		<view>{{ title }}</view>
 		<view class="text-area"><text class="title">uView - 多平台快速开发的UI框架</text></view>
 <<<<<<< HEAD
 		<view class="button-demo"><u-button :ripple="true" @tap="gotpLogin">按钮组件演示</u-button></view>
@@ -25,11 +25,11 @@ export default {
 		gotpLogin() {
 			// 通过此方式改变全局值
 			//this.$u.vuex('vuex_version', '诗圣');
-
-			this.$u.route({
-				url: 'pages/login/login',
-				animationDuration: 200
-			});
+			this.title = 'koa';
+			// this.$u.route({
+			// 	url: 'pages/login/login',
+			// 	animationDuration: 200
+			// });
 		},
 <<<<<<< HEAD
 		gotpMyPage() {
@@ -39,7 +39,7 @@ export default {
 		gotpMap() {
 			// 通过此方式改变全局值
 			//this.$u.vuex('vuex_version', '诗圣');
-		
+
 			this.$u.route({
 				url: 'pages/map/map',
 >>>>>>> 102ffcab1013f5afd3032d4a9711b75ccd3a7813
