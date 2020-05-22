@@ -23,7 +23,28 @@
 		},
 		{
 		    "path" : "pages/map/map",
-		    "style" : {}
+		    "style" : {
+				"navigationBarTitleText": "QRBike",
+				"app-plus":{
+					"titleNView":{
+						"autoBackButton":false,//app下可以隐藏
+						"buttons":[
+							{
+								 "text":"\ue648",
+								 "fontSrc":"/static/iconfont.ttf",
+								 "fontSize":"22px",
+								 "float":"left"
+							},
+							{
+								"text":"\ue78a",
+								"fontSrc":"/static/iconfont.ttf",
+								"fontSize":"22px",
+								"float":"right"
+							}
+						]
+					}
+				}
+			}
 		}
 		
     ],
