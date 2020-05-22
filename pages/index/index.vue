@@ -4,6 +4,7 @@
 		<view>{{ vuex_version }}</view>
 		<view class="text-area"><text class="title">uView - 多平台快速开发的UI框架</text></view>
 		<view class="button-demo"><u-button :ripple="true" @tap="gotpLogin">按钮组件演示</u-button></view>
+		<view class="button-demo"><u-button :ripple="true" @tap="gotpMyPage">我的信息</u-button></view>
 	</view>
 </template>
 
@@ -22,6 +23,12 @@ export default {
 
 			this.$u.route({
 				url: 'pages/login/login',
+				animationDuration: 200
+			});
+		},
+		gotpMyPage() {
+			this.$u.route({
+				url: 'pages/mypage/mypage',
 				animationDuration: 200
 			});
 		}

@@ -20,7 +20,15 @@
 		{
 		    "path" : "pages/login/forget",
 		    "style" : {}
+		},
+		{
+		    "path" : "pages/mypage/mypage",
+		    "style" : {}
 		}
+        ,{
+            "path" : "pages/AddMoney/AddMoney",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
