@@ -45,6 +45,14 @@
 		{
 		    "path" : "pages/login/forget",
 		    "style" : {}
+		},
+		{
+		    "path" : "pages/map/affirm",
+		    "style" : {}
+		},
+		{
+			"path" : "pages/map/using",
+			"style" : {}
 		}
     ],
 	"globalStyle": {

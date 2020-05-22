@@ -3,7 +3,7 @@
 		<map style="height: 100vh;width: 750upx;" :latitude="latitude" :longitude="longitude" :markers="covers" :show-location="true" :scale="9">
 			<cover-image class="scan_image" @click="scanCode()" src="../../static/scan_image.png"></cover-image>
 		</map>
-		{{ title }}
+		
 	</view>
 </template>
 
@@ -15,9 +15,7 @@ export default {
 			title: 'map',
 			latitude: 30.67, //纬度
 			longitude: 104.06, //经度
-			// windowWidth: 0,
-			// windowHeight: 0,
-			// HBW:1,//高度和宽度的比值
+			show: true,
 			//标记坐标
 			covers: [
 				{
@@ -31,10 +29,6 @@ export default {
 					iconPath: 'http://ww1.sinaimg.cn/large/006YPQhyly1geugdcuk0pj300w00wa9t.jpg'
 				}
 			]
-			// map_style:{
-			// 	width: '200px',
-			// 	height: '200px'
-			// }
 		};
 	},
 	methods: {
@@ -42,13 +36,14 @@ export default {
 			// 允许从相机和相册扫码
 			uni.scanCode({
 				success: function(res) {
-					console.log(JSON.stringify(res.result));
+					uni.redirectTo({
+						url: '../map/affirm?userId=5ebfb245ced8a0108a5d1fb0&bikeId='+res.result  //跳转到
+					});
 				}
 			});
 		}
 	},
 	onLoad() {
-		this.title = 'hello';
 		this.latitude = 30.05;
 
 		// var covers=[];
@@ -98,7 +93,7 @@ export default {
 		//                 }
 		if (val.index == 0) {
 			uni.navigateTo({
-				url: '../login/login' //测试路径，实际是跳转到用户界面
+				url: '../map/using' //测试路径，实际是跳转到用户界面
 			});
 		}
 		if (val.index == 1) {
