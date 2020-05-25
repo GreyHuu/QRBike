@@ -1,14 +1,14 @@
 <template>
 	<view class="page-body">
 		<u-top-tips ref="uTips"></u-top-tips>
-		<map style="height: 100vh;width: 750upx;" :latitude="latitude" :longitude="longitude" :markers="covers" :show-location="true" :scale="9">
+		<map style="height: 100vh;width: 750upx;" :latitude="latitude" :longitude="longitude" :markers="covers" scale="16">
 			<cover-image class="scan_image" @click="scanCode()" src="../../static/scan_image.png"></cover-image>
 		</map>
-		
 	</view>
 </template>
 
 <script>
+const _this = this;
 export default {
 	data() {
 		return {
@@ -21,44 +21,23 @@ export default {
 			},
 			id: 0, // 使用 marker点击事件 需要填写id
 			title: 'map',
-			latitude: 30.67, //纬度
-			longitude: 104.06, //经度
+			latitude: '', //纬度
+			longitude: '', //经度
 			show: true,
 			//标记坐标
-			covers: [
-				{
-					latitude: 30.67,
-					longitude: 104.06,
-					iconPath: 'http://ww1.sinaimg.cn/large/006YPQhyly1geugdcuk0pj300w00wa9t.jpg'
-				},
-				{
-					latitude: 30.67,
-					longitude: 104.0605,
-					iconPath: 'http://ww1.sinaimg.cn/large/006YPQhyly1geugdcuk0pj300w00wa9t.jpg'
-				}
-			]
+			covers: []
 		};
 	},
 	methods: {
 		scanCode: function() {
-<<<<<<< HEAD
-			// 允许从相机和相册扫码
-			uni.scanCode({
-				success: function(res) {
-					uni.redirectTo({
-						url: '../map/affirm?userId=5ebfb245ced8a0108a5d1fb0&bikeId='+res.result  //跳转到
-					});
-				}
-			});
-		}
-	},
-	onLoad() {
-=======
 			if (this.isLogin) {
 				// 允许从相机和相册扫码
 				uni.scanCode({
 					success: function(res) {
-						console.log(JSON.stringify(res.result));
+						const bikeId = res.result.trim();
+						uni.navigateTo({
+							url: '/pages/map/affirm?bikeId=' + bikeId
+						});
 					}
 				});
 			} else {
@@ -69,75 +48,50 @@ export default {
 		}
 	},
 	onLoad() {
+		var that = this;
 		//  判断是否登录   登录之后  给user赋值
-		this.isLogin = this.vuex_is_login;
+		this.isLogin = this.vuex_is_login === 1 || !!this.vuex_user;
 		if (this.isLogin) {
-			console.log(this.vuex_user);
 			this.user.id = this.vuex_user.id;
 			this.user.name = this.vuex_user.name;
 		}
-
+		//  位置定位
+		uni.getLocation({
+			type: 'wgs84',
+			success: function(res) {
+				that.longitude = res.longitude;
+				that.latitude = res.latitude;
+				const mine = {
+					latitude: res.latitude,
+					longitude: res.longitude,
+					iconPath: '/static/weizhi.png',
+					label: {
+						content: '我的位置'
+					}
+				};
+				that.covers.push(mine);
+			}
+		});
 		this.title = 'hello';
->>>>>>> a33e97b55e204fc85a4aaf7efd8bda5f448bbf2c
-		this.latitude = 30.05;
-
-		// var covers=[];
-		var that = this;
 		this.$u
 			.get('http://106.15.237.74:5000/api/bikes/get-bike-list', {
 				status: 0
 			})
 			.then(res => {
-				// var covers = [{latitude:parseFloat(res.msg[0].location_y),longitude: parseFloat(res.msg[0].location_x),iconPath: '../../../static/location.png'},{latitude:parseFloat(res.msg[1].location_y),longitude: parseFloat(res.msg[1].location_x),iconPath: '../../../static/location.png'}]
-				// var covers = [{latitude:30.67,longitude: 104.06,iconPath: '../../../static/location.png'},{latitude:30.67,longitude: 104.0605,iconPath: '../../../static/location.png'}]
-				//定义单车定位数组
-				// var covers = new Array(0);
-				// //遍历msg将经纬度和图片url放入covers属性
-				// for(var i=0;i<res.msg.length;i++){
-				// 	console.log(res.msg[i].location_y);
-				// 	covers[i].latitude = res.msg[i].location_y;
-				// 	covers[i].longitude = res.msg[i].location_x;
-				// 	covers[i].iconPath = res.msg[i].url;
-				// 	console.log(covers);
-				// }
-
-				// //遍历msg将经纬度和图片url放入covers属性
+				//遍历msg将经纬度和图片url放入covers属性
 				for (var i = 0; i < res.msg.length; i++) {
-					that.covers.push({ latitude: parseFloat(res.msg[i].location_y), longitude: parseFloat(res.msg[i].location_x), iconPath: res.msg[i].uri });
+					that.covers.push({
+						latitude: parseFloat(res.msg[i].location_y),
+						longitude: parseFloat(res.msg[i].location_x),
+						iconPath: '/static/Bike.png',
+						label: {
+							content: '单车状态:' + (parseInt(res.msg[i].status) == 0 ? '在线' : '离线')
+						}
+					});
 				}
-				console.log(that.covers);
-				// for(var i=0;i<getCovers.length;i++){
-				// 	 covers.push({latitude:getCovers[i].latitude,longitude:getCovers[i].longitude});
-				// 	// this.covers[i].latitude = getCovers[i].latitude;
-				// 	// this.covers[i].longitude = getCovers[i].longitude;
-				// 	// this.covers[i].iconPath = getCovers[i].iconPath;
-				// }
-				// console.log(covers);
 			});
 	},
 	onNavigationBarButtonTap(val) {
-		//监听顶部导航栏
-
-		//                 console.log(val.index);
-		//按钮监听
-		//                 if (val.index == 0) {
-		//                                 console.log("第一个按钮");
-		//                 };
-		//                 if (val.index == 1) {
-		//                                 console.log("第二个按钮");
-		//                 }
-<<<<<<< HEAD
-		if (val.index == 0) {
-			uni.navigateTo({
-				url: '../map/using' //测试路径，实际是跳转到用户界面
-			});
-		}
-		if (val.index == 1) {
-			uni.navigateTo({
-				url: '../login/forget' //测试路径，实际是跳转到消息页面
-			});
-=======
-
 		//  登录与否     已经登录左上角跳转到我的    右上角跳转到我的信息
 		if (this.isLogin) {
 			if (val.index == 0) {
@@ -149,7 +103,7 @@ export default {
 			if (val.index == 1) {
 				//  消息界面
 				this.$u.route({
-					url: '/pages/mypage/mypage'
+					url: '/pages/mypage/message'
 				});
 			}
 		} else {
@@ -159,49 +113,8 @@ export default {
 					url: '/pages/login/login'
 				});
 			}
->>>>>>> a33e97b55e204fc85a4aaf7efd8bda5f448bbf2c
 		}
 	}
-
-	// onLoad() {
-	// 	var that = this;
-	// 	uni.getSystemInfo({
-	// 		success:function(res){
-	// 			that.map_style.height = res.windowHeight;
-	// 			that.windowWidth = res.windowWidth;
-	// 			that.windowHeight = res.windowHeight;
-	// 		}
-	// 	});
-	// },
-	//  computed: {
-	//     fullHeight: function() {
-	// 		this.HBW = this.windowHeight/this.windowWidth
-	// 		return uni.upx2px(750*this.HBW)+'px';
-	// 	},
-	// 	halfWidth: function() {
-	// 	                return uni.upx2px(750 / 2) + 'px';
-	// 	}
-	// },
-
-	// onLoad() {
-	// 	var that = this;
-	// 	uni.getSystemInfo({
-	// 		success:function(res){
-	// 			that.map_style.height = res.windowHeight;
-	// 			that.windowWidth = res.windowWidth;
-	// 			that.windowHeight = res.windowHeight;
-	// 		}
-	// 	});
-	// },
-	//  computed: {
-	//     fullHeight: function() {
-	// 		this.HBW = this.windowHeight/this.windowWidth
-	// 		return uni.upx2px(750*this.HBW)+'px';
-	// 	},
-	// 	halfWidth: function() {
-	// 	                return uni.upx2px(750 / 2) + 'px';
-	// 	}
-	// },
 };
 </script>
 

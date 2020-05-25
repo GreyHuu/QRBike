@@ -94,7 +94,7 @@ export default {
 						 * 	使用 let example_data=this.vuex_example_data;   来进行取值
 						 * 									相当于vuex_example_data是全局变量
 						 */
-						this.$u.vuex('vuex_is_login', true);
+						this.$u.vuex('vuex_is_login', 1);
 						this.$u.vuex('vuex_user', msg);
 					} else {
 						this.$refs.uToast.show({

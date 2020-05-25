@@ -35,7 +35,7 @@ const store = new Vuex.Store({
 		// 存储当前用户
 		vuex_user: lifeData.vuex_user ? lifeData.vuex_user : null,
 		//  当前是否登录
-		vuex_is_login: lifeData.vuex_is_login ? lifeData.vuex_is_login : false,
+		vuex_is_login: lifeData.vuex_is_login ? lifeData.vuex_is_login : 2,
 		
 		
 
