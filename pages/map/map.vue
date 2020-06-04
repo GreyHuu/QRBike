@@ -2,7 +2,7 @@
 	<view class="page-body">
 		<u-top-tips ref="uTips"></u-top-tips>
 		<map style="height: 100vh;width: 750upx;" :latitude="latitude" :longitude="longitude" :markers="covers" scale="16">
-			<cover-image class="scan_image" @click="scanCode()" src="../../static/scan_image.png"></cover-image>
+			<cover-image class="scan_image" @click="scanCode()" src="/static/scan_image.png"></cover-image>
 		</map>
 	</view>
 </template>
@@ -134,12 +134,10 @@ export default {
 	height: 161upx;
 	box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);
 	border-radius: 50%;
-	/* background-color: #000000; */
 	margin-top: 80vh;
 	margin-bottom: 72upx;
 	margin-left: auto;
 	margin-right: auto;
-
 	background-color: #f8f8f8;
 }
 .location_image {
@@ -147,11 +145,9 @@ export default {
 	height: 100upx;
 	box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);
 	border-radius: 50%;
-	/* background-color: #000000; */
 	margin-top: 80vh;
 	margin-bottom: 72upx;
 	margin-left: 20upx;
-
 	background-color: #ecf5ff;
 }
 </style>

@@ -250,7 +250,7 @@ var render = function() {
         [
           _c("v-uni-cover-image", {
             staticClass: _vm._$g(3, "sc"),
-            attrs: { src: _vm._$g(3, "a-src"), _i: 3 },
+            attrs: { src: "/static/scan_image.png", _i: 3 },
             on: {
               click: function($event) {
                 return _vm.$handleViewEvent($event)
@@ -1071,7 +1071,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.page-body {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\n}\n.scan_style {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: stretch;\r\n\t-webkit-align-items: stretch;\r\n\t        align-items: stretch;\n}\n.scan_image {\r\n\twidth: 161upx;\r\n\theight: 161upx;\r\n\t-webkit-box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t        box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t-webkit-border-radius: 50%;\r\n\t        border-radius: 50%;\r\n\t/* background-color: #000000; */\r\n\tmargin-top: 80vh;\r\n\tmargin-bottom: 72upx;\r\n\tmargin-left: auto;\r\n\tmargin-right: auto;\r\n\r\n\tbackground-color: #f8f8f8;\n}\n.location_image {\r\n\twidth: 100upx;\r\n\theight: 100upx;\r\n\t-webkit-box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t        box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t-webkit-border-radius: 50%;\r\n\t        border-radius: 50%;\r\n\t/* background-color: #000000; */\r\n\tmargin-top: 80vh;\r\n\tmargin-bottom: 72upx;\r\n\tmargin-left: 20upx;\r\n\r\n\tbackground-color: #ecf5ff;\n}\r\n", ""]);
+exports.push([module.i, "\n.page-body {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\n}\n.scan_style {\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-align: stretch;\r\n\t-webkit-align-items: stretch;\r\n\t        align-items: stretch;\n}\n.scan_image {\r\n\twidth: 161upx;\r\n\theight: 161upx;\r\n\t-webkit-box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t        box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t-webkit-border-radius: 50%;\r\n\t        border-radius: 50%;\r\n\tmargin-top: 80vh;\r\n\tmargin-bottom: 72upx;\r\n\tmargin-left: auto;\r\n\tmargin-right: auto;\r\n\tbackground-color: #f8f8f8;\n}\n.location_image {\r\n\twidth: 100upx;\r\n\theight: 100upx;\r\n\t-webkit-box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t        box-shadow: 0upx 0upx 60upx 0upx rgba(0, 0, 0, 0.5);\r\n\t-webkit-border-radius: 50%;\r\n\t        border-radius: 50%;\r\n\tmargin-top: 80vh;\r\n\tmargin-bottom: 72upx;\r\n\tmargin-left: 20upx;\r\n\tbackground-color: #ecf5ff;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

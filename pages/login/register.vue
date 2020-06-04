@@ -133,7 +133,7 @@ export default {
 						const { status, msg } = res;
 						if (parseInt(status) === 100) {
 							uni.showLoading({
-								title: '重置密码中'
+								title: '注册账户中'
 							});
 							_this.isRotate = true;
 							// 注册
@@ -146,7 +146,7 @@ export default {
 									const { code, msg } = res;
 									if (parseInt(code) === 100) {
 										this.$refs.uToast.show({
-											title: '重置密码成功，请重新登录',
+											title: '注册成功，请登录',
 											type: 'success',
 											position: 'bottom'
 										});
